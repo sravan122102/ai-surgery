@@ -9,3 +9,4 @@ instance/
 start_live.py
 live_url.txt
 cloudflared.exe
+# force real build
