@@ -20,3 +20,8 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           python -c "from huggingface_hub import HfApi; HfApi().upload_folder(folder_path='.', repo_id='sravan2102/surgiscore', repo_type='space', ignore_patterns=['.git*', '.github*', 'venv*'])"
+      - name: Force Restart Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python -c "from huggingface_hub import HfApi; HfApi().restart_space(repo_id='sravan2102/surgiscore', factory_rebuild=True)"
