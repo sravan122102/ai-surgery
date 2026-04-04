@@ -1,10 +1,13 @@
-# Use the official PyTorch base image representing an Ubuntu environment
-FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime
+# Use a lightweight Python base image (much faster build, compatible with HF free tier)
+FROM python:3.10-slim
 
-# Install system dependencies required for OpenCV and other media handling
+# Install system dependencies required for OpenCV, ffmpeg, and other media handling
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx \
     libglib2.0-0 \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
     && rm -rf /var/lib/apt/lists/*
 
 # Add a user to avoid running as root, required by Hugging Face Spaces
