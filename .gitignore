@@ -1,0 +1,14 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+cloudflared.exe
+uploads/
+dataset/
+runs/
+instance/
+*.mp4
+*.mp3
