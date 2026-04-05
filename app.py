@@ -77,6 +77,15 @@ def run_analysis(job_id, video_path, trainee_name):
         jobs[job_id]["error"]  = str(e)
         print(f"[ERROR] job {job_id}: {e}")
 
+    finally:
+        # Clean up uploaded video to save disk space (critical on HF free tier)
+        try:
+            if os.path.exists(video_path):
+                os.remove(video_path)
+                print(f"[Cleanup] Deleted upload: {video_path}")
+        except OSError as cleanup_err:
+            print(f"[Cleanup] Could not delete {video_path}: {cleanup_err}")
+
 
 
 
